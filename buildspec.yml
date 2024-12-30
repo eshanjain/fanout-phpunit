@@ -18,7 +18,7 @@ phases:
      commands:
        - echo 'Running phpunit Tests'
        - composer dump-autoload
-       - ./vendor/bin/phpunit
+       - codebuild-tests-run --test-command "./vendor/bin/phpunit -vv" --files-search "codebuild-glob-search '**/*Test.php'"
 
    post_build:
        commands:
