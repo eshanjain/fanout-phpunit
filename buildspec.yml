@@ -1,0 +1,26 @@
+version: 0.2
+ 
+batch:
+   fast-fail: false
+   build-fanout:
+     parallelism: 3
+     ignore-failure: false
+ 
+phases:
+   install:
+     commands:
+       - echo 'Install dependencies'
+       - composer init -n
+       - composer require --dev phpunit/phpunit
+   pre_build:
+     commands:
+       - echo 'prebuild'
+   build:
+     commands:
+       - echo 'Running phpunit Tests'
+       - composer dump-autoload
+       - ./vendor/bin/phpunit
+
+   post_build:
+       commands:
+         - echo 'Test execution completed'
