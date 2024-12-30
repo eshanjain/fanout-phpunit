@@ -10,6 +10,9 @@ phases:
    install:
      commands:
        - echo 'Install dependencies'
+       - Invoke-WebRequest -Uri https://getcomposer.org/Composer-Setup.exe -OutFile composer-setup.exe
+       - Start-Process composer-setup.exe -Wait -ArgumentList ("/SILENT")
+       - Remove-Item composer-setup.exe
        - composer require --dev phpunit/phpunit
    pre_build:
      commands:
