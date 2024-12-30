@@ -18,6 +18,7 @@ phases:
    build:
      commands:
        - echo 'Running phpunit Tests'
+       - jq '.autoload = {"psr-4": {"App\\": "src/"}}' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
        - composer dump-autoload
        - ./vendor/bin/phpunit
 
