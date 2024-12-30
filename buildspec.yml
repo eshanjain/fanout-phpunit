@@ -10,6 +10,8 @@ phases:
    install:
      commands:
        - echo 'Install dependencies'
+       - curl -sS https://getcomposer.org/installer | php
+       - sudo mv composer.phar /usr/local/bin/composer
        - composer init -n
        - composer require --dev phpunit/phpunit
    pre_build:
