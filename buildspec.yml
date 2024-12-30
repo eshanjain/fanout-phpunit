@@ -10,9 +10,7 @@ phases:
    install:
      commands:
        - echo 'Install dependencies'
-       - curl -sS https://getcomposer.org/installer | php
-       - sudo mv composer.phar /usr/local/bin/composer
-       - composer init -n
+       - composer init -n --name=vendor/calculator --description="A simple calculator project" --require="php:>=7.4" --require-dev="phpunit/phpunit:^9.5"
        - composer require --dev phpunit/phpunit
    pre_build:
      commands:
